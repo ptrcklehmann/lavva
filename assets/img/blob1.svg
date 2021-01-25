@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76.36 62.19">
+    <defs>
+        <style>
+            .blob1 {
+                fill: url(#radial-gradient);
+            }
+        </style>
+        <radialGradient id="radial-gradient" cx="41.24" cy="57.17" r="56.54" gradientUnits="userSpaceOnUse">
+            <stop offset="0.01" stop-color="#ff1d25" />
+            <stop offset="0.16" stop-color="#ff202a" />
+            <stop offset="0.34" stop-color="#ff2a37" />
+            <stop offset="0.52" stop-color="#ff3a4e" />
+            <stop offset="0.71" stop-color="#ff506e" />
+            <stop offset="0.91" stop-color="#ff6c97" />
+            <stop offset="1" stop-color="#ff7bac" />
+        </radialGradient>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_3" data-name="Layer 3">
+            <path id="blob1" class="blob1"
+                d="M75.45,35.16c-5,19.22-21.4,29.24-37.77,26.61C21.17,58.84,4.24,48.88.54,35.16S13.08,3.07,38.31.27,80.54,16.08,75.45,35.16Z" />
+        </g>
+    </g>
+</svg>

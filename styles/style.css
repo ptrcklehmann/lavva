@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+.container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -17,4 +17,11 @@ body {
     width: 600px;
     height: 100vh;
     border: 2px solid plum;
+    background-image: url('../assets/img/bg-image.jpg');
+}
+
+svg {
+    width: 0;
+    height: 0;
+    visibility:hidden;
 }

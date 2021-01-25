@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 76.36 62.19">
+    <defs>
+        <style>
+            .blob0 {
+                fill: url(#New_Gradient_Swatch_2);
+            }
+        </style>
+        <radialGradient id="New_Gradient_Swatch_2" cx="41.24" cy="57.17" r="56.54" gradientUnits="userSpaceOnUse">
+            <stop offset="0.01" stop-color="#ff9c12" />
+            <stop offset="0.19" stop-color="#fa9712" />
+            <stop offset="0.4" stop-color="#ed8a14" />
+            <stop offset="0.62" stop-color="#d67316" />
+            <stop offset="0.84" stop-color="#b65419" />
+            <stop offset="1" stop-color="#9c3a1c" />
+        </radialGradient>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_3" data-name="Layer 3">
+            <path id="blob0" class="blob0"
+                d="M75.45,35.16c-5,19.22-21.4,29.24-37.77,26.61C21.17,58.84,4.24,48.88.54,35.16S13.08,3.07,38.31.27,80.54,16.08,75.45,35.16Z" />
+        </g>
+    </g>
+</svg>
