@@ -5,6 +5,10 @@
                 fill: url(#New_Gradient_Swatch_2);
             }
         </style>
+         <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -9" result="cm" />
+        </filter>
         <radialGradient id="New_Gradient_Swatch_2" cx="41.24" cy="57.17" r="56.54" gradientUnits="userSpaceOnUse">
             <stop offset="0.01" stop-color="#ff9c12" />
             <stop offset="0.19" stop-color="#fa9712" />
@@ -14,10 +18,12 @@
             <stop offset="1" stop-color="#9c3a1c" />
         </radialGradient>
     </defs>
+    <g clip-path="url(#glassMask)" filter="url(#goo)">
     <g id="Layer_2" data-name="Layer 2">
         <g id="Layer_3" data-name="Layer 3">
             <path id="blob0" class="blob0"
                 d="M75.45,35.16c-5,19.22-21.4,29.24-37.77,26.61C21.17,58.84,4.24,48.88.54,35.16S13.08,3.07,38.31.27,80.54,16.08,75.45,35.16Z" />
         </g>
+    </g>
     </g>
 </svg>

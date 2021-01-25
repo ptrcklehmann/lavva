@@ -18,10 +18,14 @@
     height: 100vh;
     border: 2px solid plum;
     background-image: url('../assets/img/bg-image.jpg');
+
 }
 
 svg {
     width: 0;
     height: 0;
     visibility:hidden;
+}
+.blob {
+    animation: wobble 4s ease-in-out alternate infinite, blob-one ease-in-out 13s infinite;
 }

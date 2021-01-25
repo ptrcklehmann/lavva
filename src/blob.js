@@ -23,5 +23,6 @@ class Blob {
         // ctx.closePath()
         // ctx.stroke()
         ctx.drawImage(this.image, this.x-20, this.y-25, 90, 80)
+        
     }
 }
