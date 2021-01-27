@@ -5,19 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lavva</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <canvas id="canvas"></canvas>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<svg id="blob" viewBox="0 0 143.8 117.1">
+    <defs>
+    <radialGradient id="a" cx="77.67" cy="10.23" r="106.46" gradientTransform="matrix(1 0 0 -1 0 117.89)" gradientUnits="userSpaceOnUse">
+    <stop offset=".01" stop-color="red"/>
+    <stop offset=".15" stop-color="#FF0005"/>
+    <stop offset=".3" stop-color="#FF0012"/>
+    <stop offset=".47" stop-color="#FF0029"/>
+    <stop offset=".64" stop-color="#FF0049"/>
+    <stop offset=".82" stop-color="#FF0072"/>
+    <stop offset="1" stop-color="#FF00A4"/>
+    <stop offset="1" stop-color="#FF00A5"/>
+  </radialGradient>
+  <filter id="goo">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="0.9" result="blur" />
+    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -10" result="cm" />
+  </filter>
+    </defs>
+  <g filter="url(#goo)">
+    <path x="0" y="0" x d="M142.1 66.2c-9.5 36.2-40.3 55.1-71.1 50.1C39.9 110.8 8 92 1 66.2-6.1 40.6 24.6 5.8 72.1.5c47.8-5.2 79.6 29.8 70 65.7z" fill="url(#a)"/>
+  </g>
+</svg>
+<svg id="blob2" viewBox="0 0 143.8 117.1">
+    <defs>
+        <radialGradient id="b" cx="77.67" cy="10.2298" r="106.46" gradientTransform="matrix(1 0 0 -1 0 117.8898)" gradientUnits="userSpaceOnUse">
+            <stop  offset="1.000000e-02" style="stop-color:#6BFF00"/>
+            <stop  offset="0.15" style="stop-color:#A4FF5D"/>
+            <stop  offset="0.3" style="stop-color:#7BFF00"/>
+            <stop  offset="0.47" style="stop-color:#8FFF00"/>
+            <stop  offset="0.64" style="stop-color:#ACFF00"/>
+            <stop  offset="0.82" style="stop-color:#D0FF00"/>
+            <stop  offset="1" style="stop-color:#FCFF00"/>
+            <stop  offset="1" style="stop-color:#FDFF00"/>
+        </radialGradient>
+  <filter id="goo">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="0.9" result="blur" />
+    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -10" result="cm" />
+  </filter>
+    </defs>
+  <g filter="url(#goo)">
+    <path x="0" y="0" x d="M142.1 66.2c-9.5 36.2-40.3 55.1-71.1 50.1C39.9 110.8 8 92 1 66.2-6.1 40.6 24.6 5.8 72.1.5c47.8-5.2 79.6 29.8 70 65.7z" fill="url(#b)"/>
+  </g>
+</svg>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/granim.min.js"></script>
     <script src="src/blob.js"></script>
     <script src="src/player.js"></script>
     <script src="src/game.js"></script>
     <script src="src/main.js"></script>
-    
     
 </body>
 </html>

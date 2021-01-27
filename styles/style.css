@@ -5,12 +5,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
 .container {
+    z-index: -2;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    filter:url('#goo');
 }
 
 #canvas {
@@ -18,14 +29,24 @@
     height: 100vh;
     border: 2px solid plum;
     background-image: url('../assets/img/bg-image.jpg');
-
+    background: linear-gradient(-45deg, #0F2027, #203A43, #2C5364, #0F2027);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
 }
 
-svg {
-    width: 0;
-    height: 0;
-    visibility:hidden;
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
-.blob {
-    animation: wobble 4s ease-in-out alternate infinite, blob-one ease-in-out 13s infinite;
+
+#blob {
+    width: auto;
+    display: none;
 }
