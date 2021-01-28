@@ -21,7 +21,7 @@ class Blob {
     draw() {
         
         ctx.beginPath()
-        ctx.fillStyle = gradient;
+        ctx.fillStyle = blobGrad;
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
         ctx.fill()
     }

@@ -4,19 +4,32 @@ const ctx = canvas.getContext('2d')
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
-ctx.font = '50px Balsamiq Sans'
-//colours
-const gradient = ctx.createLinearGradient(10, 0, 500, 0);
-gradient.addColorStop(0, 'red');
-gradient.addColorStop(1 / 6, '#FF0005');
-gradient.addColorStop(2 / 6, '#FF0012');
-gradient.addColorStop(3 / 6, '#FF0029');
-gradient.addColorStop(4 / 6, '#FF0049');
-gradient.addColorStop(5 / 6, '#FF0072');
-gradient.addColorStop(1, '#FF00A4');
-
+//score element
 let score = 0
 let gameFrame = 0
+const scoreCount = document.querySelector('.scoreCount')
+
+
+//colours
+const blobGrad = ctx.createLinearGradient(10, 0, 500, 0);
+blobGrad.addColorStop(0, 'red');
+blobGrad.addColorStop(1 / 6, '#FF0005');
+blobGrad.addColorStop(2 / 6, '#FF0012');
+blobGrad.addColorStop(3 / 6, '#FF0029');
+blobGrad.addColorStop(4 / 6, '#FF0049');
+blobGrad.addColorStop(5 / 6, '#FF0072');
+blobGrad.addColorStop(1, '#FF00A4');
+
+const warningGrad = ctx.createLinearGradient(10, 0, 500, 0)
+warningGrad.addColorStop(0, 'yellow');
+warningGrad.addColorStop(1 / 6, '#FFFF87');
+warningGrad.addColorStop(2 / 6, '#EFEFA7');
+warningGrad.addColorStop(3 / 6, '#D5D4AE');
+warningGrad.addColorStop(4 / 6, '#FFFA15');
+warningGrad.addColorStop(5 / 6, '#DFDD60');
+warningGrad.addColorStop(1, '#FFF04C');
+
+
 
 const game = new Game()
 
@@ -27,7 +40,7 @@ const mouse = {
     y: canvas.height/2,
     click: false
 }
-canvas.addEventListener('mousedown', e => {
+canvas.addEventListener('mousemove', e => {
     mouse.click = true
     mouse.x = e.x - canvasPosition.left
     mouse.y = e.y - canvasPosition.top
@@ -39,10 +52,11 @@ canvas.addEventListener('mouseup', () => {
 
 
 //sounds 
-const blobPop1 = document.createElement('audio')
-blobPop1.src = 'assets/sounds/lava.ogg'
-const blobPop2 = document.createElement('audio')
-blobPop2.src = 'assets/sounds/lava2.ogg'
+const blobPop = document.createElement('audio')
+blobPop.src = 'assets/sounds/blop.wav'
+
+const alertSound = document.createElement('audio')
+alertSound.src = 'assets/sounds/alert.mp3'
 
 //blobs
 const blobsArray = []
@@ -65,7 +79,7 @@ function handleBlobs() {
             if(!blobsArray[i].counted) {
                 score++
                 blobsArray[i].counted = true;
-                (blobsArray[i].sound == 'sound1') ? blobPop1.play() : blobPop2.play()
+                blobPop.play()
                 blobsArray.splice(i, 1)
                 player.radius += 2
             }
@@ -87,11 +101,12 @@ function handleObstacles() {
         gemsArray[i].draw()
     }
     for(let i = 0; i < gemsArray.length; i++) {
-    if(gemsArray[i].distance < gemsArray[i].radius/2 + player.radius/2) {
+    if(gemsArray[i].distance < gemsArray[i].radius + player.radius) {
         if(!gemsArray[i].counted) {
-            score--
+            score -= 5
             gemsArray[i].counted = true
             player.radius -= 5
+            alertSound.play()
         }
     }
 }
@@ -108,6 +123,7 @@ function animate() {
     player.draw()
     gameFrame += 1
     requestAnimationFrame(animate)
+    scoreCount.innerHTML = score
 }
 animate()
 

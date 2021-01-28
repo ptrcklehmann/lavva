@@ -13,13 +13,13 @@
 <body>
     <div class="container">
         <div class="canvasWrapper">
-            <div class="score"></div>
+            <div class="score">score: <span class="scoreCount"></span></div>
         <canvas id="canvas">
             <div class="score">Score: <span class='scoreCount'></span></div>
         </canvas>
     </div>
     </div>
-    <svg>
+    <svg class="hidden">
     <defs>
   <filter id="goo">
     <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur" />
@@ -30,11 +30,15 @@
     <path x="0" y="0" x d="M142.1 66.2c-9.5 36.2-40.3 55.1-71.1 50.1C39.9 110.8 8 92 1 66.2-6.1 40.6 24.6 5.8 72.1.5c47.8-5.2 79.6 29.8 70 65.7z" fill="url(#a)"/>
   </g>
 </svg>
+<iframe src="assets/sounds/silence.mp3" allow="autoplay" id="audio" style="display: none">
 
- <!-- <a href='https://www.freepik.com/vectors/watercolor'>Watercolor vector created by BiZkettE1 - www.freepik.com</a> -->
+</iframe>
+<audio controls autoplay style="display: none">
+    <source src="assets/sounds/sewer-soundscape.wav" type="audio/wav" >
+    Your browser does not support the audio element.
+  </audio>
 
-    
-   
+
     <script src="src/gems.js"></script>
     <script src="src/blob.js"></script>
     <script src="src/player.js"></script>

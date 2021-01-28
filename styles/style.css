@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body{
+    background: linear-gradient(90deg, #4226A6, #1D2059, #101C40, #071526);
+	background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
 }
 .container {
     padding: 10rem;
@@ -13,16 +17,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #0F2027, #203A43, #2C5364, #0F2027);
-	background-size: 400% 400%;
-    animation: gradient 5s ease infinite;
+  
 }
 .canvasWrapper {
+    position: relative;
     width: 610px;
     height: 90vh;
-    border: 3px solid #FF00A5;
+    font-family: 'Fredoka One', cursive;
+    color: #FF00A5;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.075);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     border-radius: 40px;
-    box-shadow: 0px 0px 0px 2px rgba(235, 87, 255, 0.808);
+    border: 4px solid #FF00A5;
 }
 
 #canvas {
@@ -51,6 +58,7 @@
     display: none;
 }
 .score {
+    padding: 1rem;
     position: absolute;
 }
 
