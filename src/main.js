@@ -3,30 +3,15 @@ const canvas = document.querySelector('#canvas')
 const ctx = canvas.getContext('2d')
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
-WebFont.load({
-    google: {
-      families: ['Balsamiq Sans']
-    }
-  });
+
 ctx.font = '50px Balsamiq Sans'
+var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+gradient.addColorStop("0", "#FF00A5");
+gradient.addColorStop("0.5", "#FF00A4");
+gradient.addColorStop("1.0", "#FF0049");
+ctx.fillStyle = gradient
 let score = 0
 let gameFrame = 0
-
-// var granimInstance = new Granim({
-//     element: '#canvas',
-//     name: 'background-animation',
-//     direction: 'top-bottom',
-//     opacity: [1, 1],
-//     isPausedWhenNotInView: true,
-//     states : {
-//       "default-state": {
-//           gradients: [
-//               ['#e74c3c', '#ffffff'],
-//               ['#ffffff', '#e74c3c']
-//           ]
-//     }
-// }})
-
 
 const game = new Game()
 
@@ -37,10 +22,11 @@ const mouse = {
     y: canvas.height/2,
     click: false
 }
-canvas.addEventListener('mousemove', e => {
+canvas.addEventListener('mousedown', e => {
     mouse.click = true
     mouse.x = e.x - canvasPosition.left
     mouse.y = e.y - canvasPosition.top
+    console.log(mouse.y)
 })
 canvas.addEventListener('mouseup', () => {
     mouse.click = false
@@ -58,21 +44,16 @@ var svg = document.getElementById('blob');
 var svgData = new XMLSerializer().serializeToString(svg);
 var encodedData = window.btoa(unescape(encodeURIComponent(svgData)));
 var newSrc = 'data:image/svg+xml;base64,'+encodedData;
-var svg2 = document.getElementById('blob2');
-var svgData2 = new XMLSerializer().serializeToString(svg2);
-var encodedData2 = window.btoa(unescape(encodeURIComponent(svgData2)));
-var newSrc2 = 'data:image/svg+xml;base64,'+encodedData2;
 
 const img2 = new Image()
-img2.src = newSrc2
-
+img2.src = newSrc
 
 
 //player
 const img = new Image()
 img.src = newSrc
 const player = new Player(img)
-console.log(img, img2)
+
 
 const blobsArray = []
 function handleBlobs() {
@@ -92,7 +73,8 @@ function handleBlobs() {
                 score++
                 blobsArray[i].counted = true;
                 (blobsArray[i].sound == 'sound1') ? blobPop1.play() : blobPop2.play()
-            //    blobsArray.splice(i, 1)
+                blobsArray.splice(i, 1)
+                player.radius += 1
                 
             }
         }

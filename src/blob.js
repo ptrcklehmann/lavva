@@ -17,7 +17,7 @@ class Blob {
         this.distance = Math.sqrt(dx*dx + dy*dy)
     }
     draw() {
-        ctx.filter = 'opacity(90%)'
+        ctx.filter = "url('#goo')"
         ctx.drawImage(this.image, this.x+40, this.y+40, this.radius, this.radius)
     }
 }

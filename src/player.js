@@ -18,7 +18,7 @@ class Player {
     draw() {
         //ctx.fillStyle = 'plum'
         //ctx.beginPath()
-        
+        ctx.filter = "url('#goo')"
         ctx.drawImage(this.image, this.x-40, this.y-40, this.radius, this.radius)
         //ctx.filter()
        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
