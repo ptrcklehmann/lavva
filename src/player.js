@@ -1,29 +1,24 @@
 class Player {
-    constructor(img){
-        this.x = canvas.width
-        this.y = canvas.height/2
-        this.radius = 90
-        this.image = img
+    constructor(){
+        this.x = canvas.width/2
+        this.y = canvas.height
+        this.radius = 50
+
     }
     update() {
         const dx = this.x - mouse.x
         const dy = this.y - mouse.y
         if (mouse.x != this.x) {
-            this.x -= dx/40
+            this.x -= dx/50
         } 
         if (mouse.y != this.y) {
-            this.y -= dy/40
+            this.y -= dy/50
         } 
     }
     draw() {
-        //ctx.fillStyle = 'plum'
-        //ctx.beginPath()
-        ctx.filter = "url('#goo')"
-        ctx.drawImage(this.image, this.x-40, this.y-40, this.radius, this.radius)
-        //ctx.filter()
-       // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-       // ctx.fill()
-        // ctx.closePath()
-        //ctx.fillRect(this.x, this.y, this.radius, 10)
+        ctx.beginPath()
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
     }
 }

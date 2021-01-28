@@ -5,11 +5,16 @@ canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
 ctx.font = '50px Balsamiq Sans'
-var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-gradient.addColorStop("0", "#FF00A5");
-gradient.addColorStop("0.5", "#FF00A4");
-gradient.addColorStop("1.0", "#FF0049");
-ctx.fillStyle = gradient
+//colours
+const gradient = ctx.createLinearGradient(10, 0, 500, 0);
+gradient.addColorStop(0, 'red');
+gradient.addColorStop(1 / 6, '#FF0005');
+gradient.addColorStop(2 / 6, '#FF0012');
+gradient.addColorStop(3 / 6, '#FF0029');
+gradient.addColorStop(4 / 6, '#FF0049');
+gradient.addColorStop(5 / 6, '#FF0072');
+gradient.addColorStop(1, '#FF00A4');
+
 let score = 0
 let gameFrame = 0
 
@@ -40,55 +45,68 @@ const blobPop2 = document.createElement('audio')
 blobPop2.src = 'assets/sounds/lava2.ogg'
 
 //blobs
-var svg = document.getElementById('blob');
-var svgData = new XMLSerializer().serializeToString(svg);
-var encodedData = window.btoa(unescape(encodeURIComponent(svgData)));
-var newSrc = 'data:image/svg+xml;base64,'+encodedData;
-
-const img2 = new Image()
-img2.src = newSrc
-
-
-//player
-const img = new Image()
-img.src = newSrc
-const player = new Player(img)
-
-
 const blobsArray = []
+
 function handleBlobs() {
-    if(gameFrame % 60 == 0) {
-        blobsArray.push(new Blob(img2))
-    }
     for(let i = 0; i < blobsArray.length; i++) {
         blobsArray[i].update()
         blobsArray[i].draw()
+    }
+    if(gameFrame % 100 == 0) {
+        blobsArray.push(new Blob())
     }
     for(let i = 0; i < blobsArray.length; i++) {
         if(blobsArray[i].y < 0 - blobsArray[i].radius * 2) {
             blobsArray.splice(i, 1)
         }
-        if(blobsArray[i].distance < blobsArray[i].radius + player.radius) {
-            if(blobsArray[i].counted == false) {
+    }
+    for(let i = 0; i < blobsArray.length; i++) {
+        if(blobsArray[i].distance < blobsArray[i].radius/2 + player.radius/2) {
+            if(!blobsArray[i].counted) {
                 score++
                 blobsArray[i].counted = true;
                 (blobsArray[i].sound == 'sound1') ? blobPop1.play() : blobPop2.play()
                 blobsArray.splice(i, 1)
-                player.radius += 1
-                
+                player.radius += 2
             }
+        }
+    }
+}    
+
+//player
+const player = new Player()
+
+//obstacles 
+const gemsArray = []
+function handleObstacles() {
+    if(gameFrame % 400 == 0) {
+        gemsArray.push(new Gem())
+    }
+    for(let i = 0; i < gemsArray.length; i++) {
+        gemsArray[i].update()
+        gemsArray[i].draw()
+    }
+    for(let i = 0; i < gemsArray.length; i++) {
+    if(gemsArray[i].distance < gemsArray[i].radius/2 + player.radius/2) {
+        if(!gemsArray[i].counted) {
+            score--
+            gemsArray[i].counted = true
+            player.radius -= 5
         }
     }
 }
 
+}
+
+
 //animation loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    handleBlobs()
+    handleObstacles()
     player.update()
     player.draw()
-    ctx.fillText('score: ' + score, 20, 50)
-    gameFrame++
-    handleBlobs()
+    gameFrame += 1
     requestAnimationFrame(animate)
 }
 animate()
@@ -96,3 +114,9 @@ animate()
 function randomBetween(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min)
 }
+
+window.addEventListener('resize', function(){
+    canvasPosition = canvas.getBoundingClientRect();
+    mouse.x = canvas.width/2;
+    mouse.y = canvas.height/2;
+  });
