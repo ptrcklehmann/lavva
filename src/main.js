@@ -3,6 +3,11 @@ const canvas = document.querySelector('#canvas')
 const ctx = canvas.getContext('2d')
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
+const playGame = { value: false }
+const wrapper = document.querySelector('.canvasWrapper')
+const mainScreen = document.querySelector('.mainScreen')
+
+
 
 //score element
 let score = 0
@@ -115,17 +120,26 @@ function handleObstacles() {
 
 
 //animation loop
+
 function animate() {
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     handleBlobs()
     handleObstacles()
     player.update()
     player.draw()
     gameFrame += 1
-    requestAnimationFrame(animate)
     scoreCount.innerHTML = score
+    requestAnimationFrame(animate)  
 }
-animate()
+wrapper.addEventListener('click',  () => {
+    if(playGame.value == false) {
+        mainScreen.classList.add('hide')
+        playGame.value = true
+        animate()
+    }
+})
+
 
 function randomBetween(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min)

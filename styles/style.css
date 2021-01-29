@@ -61,4 +61,26 @@ body{
     padding: 1rem;
     position: absolute;
 }
-
+.mainScreen {
+    position: absolute;
+    color: #FF00A5;
+    font-size: 1.5rem;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+}
+p {
+    margin-top: 2rem;
+    padding: 1rem; 
+}
+.hide {
+    display: none;
+}
