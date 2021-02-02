@@ -130,6 +130,9 @@ function animate() {
     player.draw()
     gameFrame += 1
     scoreCount.innerHTML = score
+    if(score < 0) {
+        
+    }
     requestAnimationFrame(animate)  
 }
 wrapper.addEventListener('click',  () => {
