@@ -1,3 +1,6 @@
-# lavva
-lavva game project
-week 3 - web development (full time) @ ironhack berlin
+# lavva game
+
+I lavva you.
+
+seek the color-like blobs to increase in size. 
+avoid yellow ones.
